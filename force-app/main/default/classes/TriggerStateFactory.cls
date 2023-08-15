@@ -30,9 +30,6 @@ public class TriggerStateFactory {
         if (operation == TriggerOperation.AFTER_DELETE) {
             return new AccountTriggerState.AfterDeleteState();
         }
-        if (operation == TriggerOperation.AFTER_UNDELETE) {
-            return new AccountTriggerState.AfterUndeleteState();
-        }
         return null;
     }
 }

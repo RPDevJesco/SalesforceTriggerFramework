@@ -20,8 +20,8 @@ public with sharing class UTIL_Fields {
     }
 
     /**
-     * @param sObjectType The SObject to be iterated upon. Eg: Account.SObjectType;
-     * @param fieldApiName String value of the field needed. Eg: Description
+     * @param sObjectType The SObject to be iterated upon. Eg: Claim_Information__c.SObjectType;
+     * @param fieldApiName String value of the field needed. Eg: PRx_Status_Update__c
      * @param startsWithValue Filter String. Eg: Complete
      * @return List of values that resides in the picklist.
      * If the startsWithValue parameter is null or an empty string, it will add all items to the list.

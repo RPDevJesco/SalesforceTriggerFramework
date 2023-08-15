@@ -38,10 +38,4 @@ public with sharing class AccountTriggerState {
             // Logic for after delete
         }
     }
-
-    public class AfterUndeleteState implements TriggerState {
-        public void handleState(TriggerContext context) {
-            // Logic for after undelete
-        }
-    }
 }
