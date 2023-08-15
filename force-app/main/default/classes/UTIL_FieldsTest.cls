@@ -6,23 +6,19 @@
 private class UTIL_FieldsTest {
     @TestSetup
     static void initializeTestData() {
-        Account accountInstance = (Account)SmartFactory.createSObject('Account');
+        Account accountInstance = new Account();
         accountInstance.Name = 'Test Account For Testing 1234567890';
-        accountInstance.Description = 'Old Description';
         insert accountInstance;
-
-        Case caseInstance = (Case)SmartFactory.createSObject('Case');
-        caseInstance.Status = 'Closed';
-        caseInstance.Account = accountInstance;
-        insert caseInstance;
     }
 
     @IsTest
     static void additionalTesting() {
-        Account accountInstance = (Account)SmartFactory.createSObject('Account');
-        System.assertEquals(accountInstance.Name, '1');
+        Account accountInstance = [SELECT Id, Name, Description, CreatedDate, AccountNumber, AccountSource, Active__c,
+                AnnualRevenue, BillingCity, BillingCountry, BillingGeocodeAccuracy, BillingPostalCode, BillingState,
+                BillingStreet FROM Account];
+        System.assertEquals(accountInstance.Name, 'Test Account For Testing 1234567890');
         System.assertEquals(accountInstance.Description, null);
-        System.assertEquals(accountInstance.CreatedDate, null);
+        System.assertEquals(accountInstance.CreatedDate, Datetime.now());
         System.assertEquals(accountInstance.AccountNumber, null);
         System.assertEquals(accountInstance.AccountSource, null);
         System.assertEquals(accountInstance.Active__c, null);

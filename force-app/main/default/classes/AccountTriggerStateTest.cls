@@ -6,8 +6,8 @@
 private class AccountTriggerStateTest {
     @TestSetup
     static void initializeTestData() {
-        Account accountInstance = (Account)SmartFactory.createSObject('Account');
-        accountInstance.Description = 'Descriptive Verbiage';
+        Account accountInstance = new Account();
+        accountInstance.Name = 'Test Account For Testing 1234567890';
         insert accountInstance;
     }
 
@@ -30,7 +30,10 @@ private class AccountTriggerStateTest {
     @IsTest
     static void testBeforeUpdateState() {
         Map<Id, Account> oldAccounts = new Map<Id, Account>([SELECT Id, Name, Description FROM Account]);
-        List<Account> newAccounts = (List<Account>)SmartFactory.createSObjectList('Account',2);
+        List<Account> newAccounts = new List<Account>{
+                new Account(Name = 'New Account 1'),
+                new Account(Name = 'New Account 2')
+        };
         insert newAccounts;
 
         // Simulate DML behavior using a helper method
